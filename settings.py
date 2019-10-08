@@ -1,4 +1,3 @@
-MIDI_PATH = '/data/'            # Old config, must be kept if importing data_loaders/utils.py
 # Data representation
 NOTE_DICTIONARY = {
     'A': 0,
