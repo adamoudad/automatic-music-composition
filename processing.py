@@ -1,7 +1,8 @@
 from os import path
 import numpy as np
+import glob
 
-from music21 import converter
+from music21 import converter, instrument
 from music21.note import Note
 from music21.chord import Chord
 
@@ -17,8 +18,6 @@ def load_midi_to_array(midi_path=MIDI_PATH):
     :return: list of notes
     :rtype: list
     """
-    from music21 import converter, instrument, note, chord
-    import glob
     notes = []
 
     for file in glob.glob(path.join(midi_path,"*.mid")):
@@ -33,9 +32,9 @@ def load_midi_to_array(midi_path=MIDI_PATH):
             notes_to_parse = midi.flat.notes
 
         for element in notes_to_parse:
-            if isinstance(element, note.Note):
+            if isinstance(element, Note):
                 notes.append(str(element.pitch))
-            elif isinstance(element, chord.Chord):
+            elif isinstance(element, Chord):
                 notes.append('.'.join(str(n) for n in element.normalOrder))
     return notes
 
