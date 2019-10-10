@@ -39,3 +39,12 @@ class Pianoroll:
         return len(self.matrix)
 
 
+class NoteSequence:
+    '''
+    Represents a sequence of notes (or more generally musical symbols).
+    '''
+    def __init__(self, sequence, pitchnames=[]):
+        self.sequence = sequence
+        self.pitchnames = (
+            pitchnames if pitchnames
+            else sorted(set(item for item in notes)))
